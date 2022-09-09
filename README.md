@@ -9,7 +9,9 @@ DB SCRIPT : MySQL
 
 create database crudApi
 
-CREATE TABLE Todos (
+USE SMALL T IN TABLE NAME AS AWS has same
+
+CREATE TABLE todos (
     Id int NOT NULL auto_increment,
     DESCRIPTION varchar(255),
     DONE varchar(255),
@@ -18,11 +20,11 @@ CREATE TABLE Todos (
      PRIMARY KEY (ID)
 );
 
-INSERT INTO Todos
+INSERT INTO todos
 VALUES (1, "Learn JAvascript", false,"2021-12-15", "Shivanshu");
-INSERT INTO Todos
+INSERT INTO todos
 VALUES (2, "Learn Angular", false,"2021-12-15", "Shivanshu");
-INSERT INTO Todos
+INSERT INTO todos
 VALUES (3, "Learn AWS", false,"2021-12-15", "Ayush");
 
 select * from Todos;
