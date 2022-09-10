@@ -13,17 +13,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Shivanshu.restapi.restfulwebservice.Model.AuthenticatedUserResponse;
+import com.Shivanshu.restapi.restfulwebservice.Model.LoginDetails;
 import com.Shivanshu.restapi.restfulwebservice.Model.Todo;
+import com.Shivanshu.restapi.restfulwebservice.Service.LoginDetailsAuthenticateService;
 import com.Shivanshu.restapi.restfulwebservice.Service.TodoHardcoadedService;
 import com.Shivanshu.restapi.restfulwebservice.Service.TodoService;
 
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin(origins = {"http://localhost:4200","http://todoangularcode.s3-website-us-west-2.amazonaws.com"})
+@CrossOrigin
 @RestController
 public class ToDoController {
 
 
 	@Autowired
 	private TodoService todoService;
+	
+	@Autowired
+	private LoginDetailsAuthenticateService loginDetailsAuthenticateService;
 
 	//retreive all todos for a User logged in 
 	@GetMapping("/users/{username}/todos")
@@ -39,7 +46,8 @@ public class ToDoController {
 	
 	//adding new todo
 		@PostMapping("/users/{username}/todos")
-		public Todo saveTodo(@RequestBody Todo todo){
+		public Todo saveTodo(@RequestBody Todo todo , @PathVariable String username){
+			todo.setUserName(username);
 			return todoService.saveTodo(todo);	
 		}
 
@@ -54,4 +62,11 @@ public class ToDoController {
 	public  void deleteTodo(@PathVariable long id) {
 		todoService.deleteTodoForID(id);	
 	}
+	
+	@PostMapping("/authenticateUser")
+	public AuthenticatedUserResponse  authenticateUser(@RequestBody LoginDetails loginDetails){
+		return loginDetailsAuthenticateService.authenticate(loginDetails);	
+		
+	}
+	
 }

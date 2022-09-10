@@ -25,9 +25,9 @@ public class TodoDao {
 		Session currentSession = entityManager.unwrap(Session.class);
 
 		//USE below to retrive foe particular username
-	//	Query getAllTodosForUsername= currentSession.createQuery("from Todo where username = :username");
-		//	getAllTodosForUsername.setParameter("username", username);
-		Query getAllTodosForUsername= currentSession.createQuery("from Todo");
+		Query getAllTodosForUsername= currentSession.createQuery("from Todo where username = :username");
+			getAllTodosForUsername.setParameter("username", username);
+	//	Query getAllTodosForUsername= currentSession.createQuery("from Todo");
 		
 		
 		 List<Todo> listOfTodos = getAllTodosForUsername.list();
