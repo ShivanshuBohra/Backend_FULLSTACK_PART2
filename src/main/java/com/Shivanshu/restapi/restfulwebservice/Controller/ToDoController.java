@@ -68,5 +68,12 @@ public class ToDoController {
 		return loginDetailsAuthenticateService.authenticate(loginDetails);	
 		
 	}
+	@PostMapping("/registerUser")
+	public AuthenticatedUserResponse  registerUser(@RequestBody LoginDetails loginDetails){
+		return loginDetailsAuthenticateService.registerUser(loginDetails);	
+		
+	}
+	
+	
 	
 }
