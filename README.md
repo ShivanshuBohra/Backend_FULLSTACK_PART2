@@ -56,3 +56,16 @@ API's in this app:
        "targetDate": "2021-12-14T18:30:00.000+00:00",
        "isDone": false
       }
+     
+   5> @PostMapping("/registerUser")   : to register new user 
+   6> @PostMapping("/authenticateUser") : to authenticate user
+     For below endpoints
+     
+1> //Add SecretKey and Access key from amazon security in AWSSNSConfig
+2> Add TOPIC_ARN in public from AWS SNS Service name
+
+   @GetMapping("/addSubscription/{email}")
+    to send Email for subscription with aws sns
+ 
+  @GetMapping("/sendNotification")
+ to push notification
